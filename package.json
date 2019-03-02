@@ -5,13 +5,23 @@
   "repository": "git@github.com:naughtLdy/sandbox-embulk-mysql2bigquery.git",
   "author": "naughtLdy <naughtLdy@users.noreply.github.com>",
   "license": "MIT",
-  "scripts": {
-    "commitmsg": "commitlint -e $GIT_PARAMS"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "devDependencies": {
     "@commitlint/cli": "^7.5.2",
     "@commitlint/config-conventional": "^7.5.0",
     "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
     "prettier": "^1.16.4"
   }
 }
